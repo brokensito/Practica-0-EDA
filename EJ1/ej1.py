@@ -46,7 +46,7 @@ def altura(numero):
         print("Eres de estatura promedio.")
 
 def nacimiento(numero):
-    actual = date.today().year
+    actual = date.today().year # Esto tengo que comentarlo despues
     resultado = numero - actual
     return resultado
 
@@ -62,7 +62,7 @@ if __name__=="__main__":
     var = False
 
     while var == False:
-        contrasena = input("Escribe la constraseña: ")
+        contrasena = input("Escribe la contraseña: ")
         contra = acceso(contrasena)
         if contra:
             var = True
