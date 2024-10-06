@@ -33,19 +33,48 @@ def acceso(contra):
         print("Acceso denegado.")
         return False
     
-def edad(numero):
+def edad():
+
+    try: 
+        numero = int(input("Introduce tu edad: "))
+        if numero <=0:
+            raise ValueError
+        
+    except ValueError:
+        print("El numero introducido no puede ser negativo, intentalo de nuevo")
+        return edad()
+
     if numero >=18:
         print("Eres mayor de edad.")
     else:
         print("Eres menor de edad.")
 
-def altura(numero):
-    if numero > 1.7:
+def altura():
+
+    try:
+        numero = float(input("Introduce tu estatura en centimetros: "))
+        if numero <=0:
+            raise ValueError
+
+    except ValueError:
+        print("La estatura no puede ser negativa, intentelo de nuevo. ")
+        altura()
+
+    if numero > 170:
         print("Eres alto.")
     else:
         print("Eres de estatura promedio.")
 
-def nacimiento(numero):
+def nacimiento():
+    try:
+        numero = int(input("Introduce tu año de nacimiento"))
+        if numero>date.today().year:
+            raise ValueError
+    
+    except ValueError:
+        print("Introduce un año valido, intentalo de nuevo")
+        return nacimiento()
+
     actual = date.today().year # Esto tengo que comentarlo despues
     resultado = numero - actual
     return resultado
@@ -68,6 +97,10 @@ if __name__=="__main__":
             var = True
         else:
             print("\nEscribe la contraseña de nuevo por favor...")
+
+    edad()
+    altura()
+    nacimiento()
 
         
 

@@ -26,6 +26,7 @@ tupla.
 
 '''
 
+# Preguntar a que se refiere con lo de arriba del todo --> debe pedir al usuario numeros hasta que pare?
 def frase_vocales(): # Mirar si esta bien
     usuario = input("Escribe una frase: ")
     vocales = ["a","e","i","o","u"]

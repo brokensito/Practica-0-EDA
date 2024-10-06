@@ -31,10 +31,13 @@ def div_cero():
 
     try: 
         resultado = a/b
+        return resultado
+    
     except ZeroDivisionError:
         print("No se puede dividir por cero, intentalo de nuevo.")
-    else:
-        return resultado
+        errores("Error al dividir por 0")
+        return div_cero()
+
 
 
 def cadena_texto():
@@ -47,6 +50,7 @@ def cadena_texto():
 
     except ValueError:
         print("La cadena introducida no se puede convertir a entero. Intentelo de nuevo.")
+        errores("No es posible convertir la cadena a entero")
         return cadena_texto()
     
 
@@ -56,6 +60,7 @@ def raiz(): # Preguntar si tambien tengo que manejar la excepcion si el numero e
     try:
         if numero <0:
             print("\n El numero introducido no puede ser MENOR o IGUAL a  CERO")
+            errores("Introducir un valor negativo en una raiz")
             raise ValueError
         else:
             return math.sqrt(numero)
@@ -65,16 +70,16 @@ def raiz(): # Preguntar si tambien tengo que manejar la excepcion si el numero e
 
 def errores(mensaje):
     with open("excepciones.txt","a") as archivo:
-        archivo.write()
-
-
-
-# Preguntar como tengo que abrir el archivo y si se tiene que sobreescribir
+        # preguntar si tambien tenemos que poner la fecha en la que se cometio el error o que hacer
+        archivo.write(f"Error: {mensaje}\n")
 
 # Utilizar la funcion readlines en el ejericicio de despues
 if __name__=="__main__":
-    with open('excepciones.txt','w') as archivo:
-        archivo.write("\n")
+    div_cero()
+    cadena_texto/()
+    raiz()
+
+    
 
 
 
