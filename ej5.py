@@ -27,15 +27,13 @@ def leer(archivo):
     except Exception as excepcion:
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
-def buscar(nombre_archivo):
+def buscar():
 
     try:
-        with open(nombre_archivo, "r" ) as archivo:
+        with open("archivo.txt", "r" ) as archivo:
             
             lineas = archivo.readlines()
             print(lineas)
-
-            
 
         
     except FileNotFoundError:
@@ -46,9 +44,8 @@ def buscar(nombre_archivo):
 
 if __name__=="__main__":
 
-    nombre = input("Introduce el nombre del archivo con la extension que le corresponde ")
-
-    buscar(nombre)
+    buscar()
+    
 
 
 
