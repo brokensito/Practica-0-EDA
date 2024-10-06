@@ -27,11 +27,11 @@ def leer(archivo):
     except Exception as excepcion:
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
+# Se puede hacer de maneras diferentes pero preguntar si podemos usar la funcion enumerate para esto o suena muy cantoso
 def buscar(palabra):
 
     try:
         with open("archivo.txt", "r" ) as archivo:
-            
             lineas = archivo.readlines()
 
         encontrado = []
