@@ -26,13 +26,13 @@ tupla.
 
 '''
 
-def frase_vocales():
+def frase_vocales(): # Mirar si esta bien
     usuario = input("Escribe una frase: ")
     vocales = ["a","e","i","o","u"]
     contador = 0
 
-    for i in usuario:
-        if i in vocales:
+    for letra in usuario:
+        if letra.lower() in vocales:
             contador+=1
 
     return contador
@@ -51,9 +51,10 @@ def inverso(lista):
     return lista[::-1]
 
 if __name__=="__main__":
+
     ejemplo = [1,2,3,4,5,7,5,1,]
 
-    print(inverso(ejemplo))
+    print(frase_vocales())
 
 
 
