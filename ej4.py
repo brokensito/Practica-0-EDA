@@ -73,7 +73,7 @@ def errores(mensaje):
         # preguntar si tambien tenemos que poner la fecha en la que se cometio el error o que hacer
         archivo.write(f"Error: {mensaje}\n")
 
-# Utilizar la funcion readlines en el ejericicio de despues
+# Preguntar si hay que hacer mas control de excepciones o no
 if __name__=="__main__":
     div_cero()
     cadena_texto/()

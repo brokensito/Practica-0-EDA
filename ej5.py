@@ -28,10 +28,10 @@ def leer(archivo):
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
 # Se puede hacer de maneras diferentes pero preguntar si podemos usar la funcion enumerate para esto o suena muy cantoso
-def buscar(palabra):
+def buscar(archivo_usuario, palabra):
 
     try:
-        with open("archivo.txt", "r" ) as archivo:
+        with open(archivo_usuario, "r" ) as archivo:
             lineas = archivo.readlines()
 
         encontrado = []
@@ -58,7 +58,10 @@ def buscar(palabra):
 
 if __name__=="__main__":
 
-    buscar("llamo")
+    archivo = input("Escriba el nombre del archivo con su exntesion: ")
+
+    leer(archivo)
+    buscar(archivo, "david") # Esta en el archivo.txt de esta misma carpeta
     
 
 
