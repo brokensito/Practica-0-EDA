@@ -27,15 +27,29 @@ def leer(archivo):
     except Exception as excepcion:
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
-def buscar():
+def buscar(palabra):
 
     try:
         with open("archivo.txt", "r" ) as archivo:
             
             lineas = archivo.readlines()
-            print(lineas)
 
+        encontrado = []
+        indices = []
+
+        for linea in lineas:
+            if palabra.lower() in linea.lower():
+                encontrado.append(linea)
+
+        for palabras in encontrado:
+            indices.append(lineas.index(palabras)+1)
         
+        if indices:
+            print(f" Se encontro la palabra {palabra} en las lineas: {indices}")
+
+        else:
+            print(f"No se encontro la palabra {palabra}")
+
     except FileNotFoundError:
         print("ERROR: el archivo no existe")
 
@@ -44,7 +58,7 @@ def buscar():
 
 if __name__=="__main__":
 
-    buscar()
+    buscar("llamo")
     
 
 
