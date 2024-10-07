@@ -4,8 +4,8 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 1  
 - EXPLICACIONES: 
 
+- En la funcion nacimiento() se implementa el modulo datetime para sacar el año actual
 
-** mencionar el modulo datetime
 
 
 20. Pide al usuario que ingrese una contraseña. Si la contraseña es 'python123',
@@ -34,13 +34,16 @@ def acceso(contra):
         return False
     
 def edad():
-
     try: 
         numero = int(input("Introduce tu edad: "))
         if numero <=0:
-            raise ValueError
-        
+            raise TypeError
+    
     except ValueError:
+        print("Tienes que pasar un numero entero positivo, intentalo de nuevo")
+        return edad()
+        
+    except TypeError:
         print("El numero introducido no puede ser negativo, intentalo de nuevo")
         return edad()
 
@@ -50,13 +53,16 @@ def edad():
         print("Eres menor de edad.")
 
 def altura():
-
     try:
         numero = float(input("Introduce tu estatura en centimetros: "))
         if numero <=0:
-            raise ValueError
-
+            raise TypeError
+        
     except ValueError:
+        print("Tienes que pasar un numero entero positivo, intentalo de nuevo. ")
+        return altura()
+
+    except TypeError:
         print("La estatura no puede ser negativa, intentelo de nuevo. ")
         altura()
 
@@ -77,17 +83,15 @@ def nacimiento():
 
     actual = date.today().year # Esto tengo que comentarlo despues
     resultado = numero - actual
+
+    if resultado>=30:
+        print("Tienes 30 años o mas")
+    else:
+        print("Eres menor de 30 años")
+
     return resultado
 
 if __name__=="__main__":
-
-
-# Hay que hacer control de excepciones con la edad --> ver cuando es negativo o es 0
-
-# "" con la altura --> ver cuando es 0 o negativo
-
-# "" con el nacimiento --> hacer un if al final para ver cuando es mayor o menor que 30
-
     var = False
 
     while var == False:
@@ -97,6 +101,9 @@ if __name__=="__main__":
             var = True
         else:
             print("\nEscribe la contraseña de nuevo por favor...")
+
+    # Preguntar si en las funciones hay que hacer return True/False y luego ifs para decir si es menor o mayor de edad 
+    # (o del caso contrario implementarlo en la propia funcion como ahora)
 
     edad()
     altura()

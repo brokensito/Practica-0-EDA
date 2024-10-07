@@ -1,0 +1,2 @@
+Error: No es posible convertir la cadena a entero
+Error: Error al introducir string en vez de numero

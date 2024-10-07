@@ -1,18 +1,8 @@
 ''' 
 PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25  
 - AUTOR: David Sanz Fuertes   
-- EJERCICIO: 4  
+- EJERCICIO: 5 
 - EXPLICACIONES: 
-
-Ejercicios 2,6 
-
-
-2. Escribe un programa que lea todo el contenido del archivo y lo muestre en
-pantalla.
-
-6. Escribe un programa que busque una palabra específica en un archivo de
-texto. Si la encuentra, muestra en qué líneas aparece.
-
 
 '''
 
@@ -28,6 +18,7 @@ def leer(archivo):
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
 # Se puede hacer de maneras diferentes pero preguntar si podemos usar la funcion enumerate para esto o suena muy cantoso
+# Tambien preguntar si tenemoso que poner la fecha en la que se ha cometido el error o tambien sonaria muy cantoso
 def buscar(archivo_usuario, palabra):
 
     try:
@@ -58,10 +49,10 @@ def buscar(archivo_usuario, palabra):
 
 if __name__=="__main__":
 
-    archivo = input("Escriba el nombre del archivo con su exntesion: ")
+    archivo = input("Escriba el nombre del archivo con su extension: ")
 
     leer(archivo)
-    buscar(archivo, "david") # Esta en el archivo.txt de esta misma carpeta
+    buscar(archivo, "david") # Esta en el archivo.txt de esta misma carpeta (por probar)
     
 
 
