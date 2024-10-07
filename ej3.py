@@ -21,7 +21,7 @@ def calculadora(num1, num2, operacion):
     elif operacion.lower() == "division":
         return division(num1,num2)
     else:
-        print("La operacion no existe, intenalo de nuevo")
+        print("La operacion no existe, intentalo de nuevo")
         operacion = input("Escribe la operacion de nuevo: ")
         return calculadora(num1, num2, operacion)
 
@@ -39,5 +39,14 @@ def division(num1, num2):
 
 if __name__=="__main__":
 
-    print(calculadora(num1=3,num2=4, operacion="division"))
+    try:
+        numero1 = float(input("Escribe el primer numero: "))
+        numero2 = float(input("Escribe el segundo numero:"))
+        operacion_usuario = input("Escribe el nombre de la operacion (suma, resta, multiplicacion, division): ")
+
+    except Exception as excepcion:
+        print(f"ERROR: ha habido un error en el programa. ")
+
+    
+    calculadora(numero1, numero2, operacion_usuario)
 
