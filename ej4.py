@@ -76,7 +76,7 @@ def errores(mensaje):
 # Preguntar si hay que hacer mas control de excepciones o no
 if __name__=="__main__":
     div_cero()
-    cadena_texto/()
+    cadena_texto()
     raiz()
 
     
