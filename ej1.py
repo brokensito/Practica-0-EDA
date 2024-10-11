@@ -102,8 +102,7 @@ if __name__=="__main__":
         else:
             print("\nEscribe la contraseña de nuevo por favor...")
 
-    # Preguntar si en las funciones hay que hacer return True/False y luego ifs para decir si es menor o mayor de edad 
-    # (o del caso contrario implementarlo en la propia funcion como ahora)
+
 
     edad()
     altura()

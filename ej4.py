@@ -6,6 +6,8 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 
 
 '''
+import os
+from datetime import datetime
 import math
 
 def div_cero():
@@ -37,12 +39,12 @@ def cadena_texto():
         return cadena
 
     except ValueError:
-        print("La cadena introducida no se puede convertir a entero. Intentelo de nuevo.")
-        errores("No es posible convertir la cadena a entero")
+        print("ERROR: La cadena introducida no se puede convertir a entero. Intentelo de nuevo.\n")
+        errores("No es posible convertir la cadena a entero.")
         return cadena_texto()
     
 
-def raiz(): # Preguntar si tambien tengo que manejar la excepcion si el numero es un string o algo del estilo 
+def raiz(): 
     numero = float(input("\nIntroduce el numero cuya raiz quieres calcular: "))
 
     try:
@@ -52,7 +54,7 @@ def raiz(): # Preguntar si tambien tengo que manejar la excepcion si el numero e
             return math.sqrt(numero)
         
     except ValueError:
-        print("El argumento introducido tiene que ser un numero, intentelo de nuevo. ")
+        print("\nEl argumento introducido tiene que ser un numero, intentelo de nuevo. ")
         errores("Introducir un string en vez de un numero")
         raiz()
         
@@ -61,18 +63,24 @@ def raiz(): # Preguntar si tambien tengo que manejar la excepcion si el numero e
         errores("Introducir un valor negativo en una raiz")
         return raiz()
     
-# Tambien preguntar si tenemoso que poner la fecha en la que se ha cometido el error o tambien sonaria muy cantoso
 def errores(mensaje):
     with open("excepciones.txt","a") as archivo:
-        archivo.write(f"Error: {mensaje}\n")
+        archivo.write(f"{datetime.now()} Error: {mensaje}\n")
 
-# Preguntar si hay que hacer mas control de excepciones o no
+def imprimir_linea(estilo='-', longitud=50, mensaje=''):
+    if mensaje:
+        linea = estilo * ((longitud - len(mensaje) - 2) // 2)
+        print(f"{linea} {mensaje} {linea}")
+    else:
+        print(estilo * longitud)
+
 if __name__=="__main__":
+    print("Programa para dividir dos numeros (con excepciones)")
     div_cero()
+    
+    print("Programa para convertir una cadena a entero.")
     cadena_texto()
     raiz()
-    
-
 
 
 
