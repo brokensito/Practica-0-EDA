@@ -27,67 +27,60 @@ from datetime import date
 
 def acceso(contra):
     if contra == "python123":
-        print("Acceso concedido.")
+        print("\n\t ¡ACCESO CONCEDIDO! ")
         return True
     else:
-        print("Acceso denegado.")
+        print("\n\t ¡ACCESO DENEGADO!")
         return False
     
 def edad():
     try: 
-        numero = int(input("Introduce tu edad: "))
-        if numero <=0:
+        numero = int(input("\nIntroduce tu edad: "))
+        if numero <=0 or type(numero)!=int:
             raise TypeError
     
     except ValueError:
-        print("Tienes que pasar un numero entero positivo, intentalo de nuevo")
+        print("El numero introducido tiene que ser ENTERO y POSITIVO, intentalo de nuevo...")
         return edad()
         
     except TypeError:
-        print("El numero introducido no puede ser negativo, intentalo de nuevo")
+        print("El numero introducido no puede ser NEGATIVO o CERO, intentalo de nuevo")
         return edad()
+    
+    return numero
 
-    if numero >=18:
-        print("Eres mayor de edad.")
-    else:
-        print("Eres menor de edad.")
 
 def altura():
     try:
-        numero = float(input("Introduce tu estatura en centimetros: "))
+        numero = float(input("\nIntroduce tu estatura en centimetros: "))
         if numero <=0:
             raise TypeError
         
     except ValueError:
-        print("Tienes que pasar un numero entero positivo, intentalo de nuevo. ")
+        print("Tienes que pasar un numero entero positivo, intentalo de nuevo... ")
         return altura()
 
     except TypeError:
-        print("La estatura no puede ser negativa, intentelo de nuevo. ")
+        print("La estatura no puede ser negativa, intentelo de nuevo... ")
         altura()
 
-    if numero > 170:
-        print("Eres alto.")
-    else:
-        print("Eres de estatura promedio.")
+    return numero
 
 def nacimiento():
     try:
-        numero = int(input("Introduce tu año de nacimiento"))
+        numero = int(input("\nIntroduce tu año de nacimiento: "))
         if numero>date.today().year:
             raise ValueError
     
     except ValueError:
-        print("Introduce un año valido, intentalo de nuevo")
+        print("Introduce un año valido, intentalo de nuevo...")
         return nacimiento()
 
-    actual = date.today().year # Esto tengo que comentarlo despues
-    resultado = numero - actual
+    actual = date.today().year 
+    resultado = actual - numero
 
-    if resultado>=30:
-        print("Tienes 30 años o mas")
-    else:
-        print("Eres menor de 30 años")
+    return resultado
+    
 
     return resultado
 
@@ -101,12 +94,39 @@ if __name__=="__main__":
             var = True
         else:
             print("\nEscribe la contraseña de nuevo por favor...")
+            print("\n******************************************************\n")
+
+    print("\n---------------- EDAD ----------------")
+    edad_usuario = edad()   
+    
+    if edad_usuario>18:
+        print("Eres mayor de edad.\n")
+    else:
+        print("Eres menor de edad.\n")
+
+
+    print("-----------------ALTURA----------------")
+    altura_usuario = altura()
+
+    if altura_usuario>170:
+        print("Eres alto.\n")
+    else:
+        print("Eres de estatura promedio. \n")
+
+
+    print("-----------------NACIMIENTO----------------")
+    nacimiento_usuario = nacimiento()
+
+    if nacimiento_usuario>=30:
+        print("Tienes 30 años o mas.\n")
+    else:
+        print("Eres menor de 30 años.\n")
+
+
+    print("********* FIN DEL PROGRAMA *********")
 
 
 
-    edad()
-    altura()
-    nacimiento()
 
         
 
