@@ -4,10 +4,10 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 2  
 - EXPLICACIONES: 
 
-- En la funcion frases_vocales recorremos el input del usuario y lo ponemos en lower para contar tambien las letras mayusculas.
-
-- En la funcion min_max() 
-
+1. En la primera funcion se pide al usuario una cadena y se recorre toda la cadena utilizando la funcion lower para contar tambien las vocales 
+mayusculas. 
+2. En la funcion min_max() se hace return de dos argumentos (o lo que sea eso) que nos da el maximo y el minimo
+3. En la funcion duplicados() se pasa una lista y se hace return con la funcion set() que elimina los duplicados
 
 
 
@@ -32,12 +32,11 @@ def duplicados(lista):
     return set(lista)
 
 def inverso(lista):
-
     return lista[::-1]
 
 if __name__=="__main__":
-    # Preguntar si tenemos que pedirle al usuario que ingrese elementos de una lista
-    ejemplo = [1,2,3,4,5,7,5,1,]
+
+    ejemplo = [1,2,3,4,5,7,5,99]
     maximo, minimo = min_max(ejemplo)
     elem_duplicados = duplicados(ejemplo)
     lista_inversa = inverso(ejemplo)
@@ -48,60 +47,5 @@ if __name__=="__main__":
     
     vocales = frase_vocales()
     print(f"El nunero de vocales en la frase introducida es: {vocales}")
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
