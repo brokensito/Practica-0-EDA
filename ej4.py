@@ -75,10 +75,14 @@ def imprimir_linea(estilo='-', longitud=50, mensaje=''):
         print(estilo * longitud)
 
 if __name__=="__main__":
-    print("Programa para dividir dos numeros (con excepciones)")
+    print("**********************************************************")
+    print("\n\tPrograma para dividir dos numeros (con excepciones)")
     div_cero()
     
-    print("Programa para convertir una cadena a entero.")
+
+    
+    print("**********************************************************")
+    print("\n\tPrograma para convertir una cadena a entero.")
     cadena_texto()
     raiz()
 
