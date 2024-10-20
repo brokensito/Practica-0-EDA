@@ -5,11 +5,12 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EXPLICACIONES: 
 
 - En la funcion nacimiento() se implementa el modulo datetime para sacar el año actual, de manera que se resta con el año introducido por el 
-usuario para sacar su edad actual.
+usuario para sacar su edad actual (y que se pueda utiliza el programa por ejemplo el año siguiente y no solo con el numero actual "2024".)
 - Se han hecho excepciones para evaluar la mayoria de los casos en las diferentes funciones.
 - Al principio del programa se establece un bucle para introducir la contraseña y que se conceda el acceso unicamente si es la correcta,
 si es diferente se le pide al usuario de nuevo. 
 - En los demas apartados en vez de utilizar bucles se utiliza recursividad.
+- 
 
 
 '''
@@ -27,15 +28,11 @@ def acceso(contra):
 def edad():
     try: 
         numero = int(input("\nIntroduce tu edad: "))
-        if numero <=0 or type(numero)!=int:
-            raise TypeError
-    
-    except ValueError:
-        print("El numero introducido tiene que ser ENTERO y POSITIVO, intentalo de nuevo...")
-        return edad()
+        if numero <= 0:
+            raise ValueError
         
-    except TypeError:
-        print("El numero introducido no puede ser NEGATIVO o CERO, intentalo de nuevo")
+    except ValueError:
+        print("El número introducido tiene que ser un entero positivo, inténtalo de nuevo...")
         return edad()
     
     return numero
@@ -43,31 +40,29 @@ def edad():
 
 def altura():
     try:
-        numero = float(input("\nIntroduce tu estatura en centimetros: "))
-        if numero <=0:
-            raise TypeError
+        numero = float(input("\nIntroduce tu estatura en centímetros: "))
+
+        if numero <= 0:
+            raise ValueError
         
     except ValueError:
-        print("Tienes que pasar un numero entero positivo, intentalo de nuevo... ")
+        print("Debes introducir un número positivo, inténtalo de nuevo...")
         return altura()
-
-    except TypeError:
-        print("La estatura no puede ser negativa, intentelo de nuevo... ")
-        altura()
-
+    
     return numero
+
 
 def nacimiento():
     try:
         numero = int(input("\nIntroduce tu año de nacimiento: "))
-        if numero>date.today().year:
+        actual = date.today().year
+        if numero>actual or date.today().year:
             raise ValueError
     
     except ValueError:
         print("Introduce un año valido, intentalo de nuevo...")
         return nacimiento()
 
-    actual = date.today().year 
     resultado = actual - numero
 
     return resultado
