@@ -15,97 +15,119 @@ si es diferente se le pide al usuario de nuevo.
 
 '''
 
-from datetime import date
+from datetime import date  # Importamos el módulo date para obtener el año actual
 
 def acceso(contra):
+    """
+    Función que verifica si la contraseña introducida es correcta.
+    """
     if contra == "python123":
         print("\n\t ¡ACCESO CONCEDIDO! ")
-        return True
+        return True  # Devuelve True si la contraseña es correcta
+    
     else:
         print("\n\t ¡ACCESO DENEGADO!")
-        return False
-    
+        return False  # Devuelve False si la contraseña es incorrecta
+
 def edad():
+    """
+    Función que solicita al usuario que introduzca su edad y la valida.
+    """
     try: 
         numero = int(input("\nIntroduce tu edad: "))
+
         if numero <= 0:
-            raise ValueError
+            raise TypeError  # Lanza una excepción si el número es negativo o cero
         
     except ValueError:
-        print("El número introducido tiene que ser un entero positivo, inténtalo de nuevo...")
-        return edad()
+        # Se ejecuta si el usuario no introduce un número entero
+        print("El número introducido tiene que ser ENTERO y POSITIVO, inténtalo de nuevo...")
+        return edad()  # Llamada recursiva hasta que se introduzca un valor válido
     
-    return numero
-
+    except TypeError:
+        # Se ejecuta si el número es negativo o cero
+        print("El número introducido no puede ser NEGATIVO o CERO, inténtalo de nuevo")
+        return edad()  # Llamada recursiva hasta que se introduzca un valor válido
+    
+    return numero  # Devuelve la edad válida
 
 def altura():
+    """
+    Función que solicita al usuario su estatura en centímetros y la valida.
+    """
     try:
         numero = float(input("\nIntroduce tu estatura en centímetros: "))
-
         if numero <= 0:
-            raise ValueError
+            raise TypeError  # Lanza una excepción si la estatura es negativa o cero
         
     except ValueError:
-        print("Debes introducir un número positivo, inténtalo de nuevo...")
-        return altura()
+        # Se ejecuta si el usuario no introduce un número válido
+        print("Tienes que pasar un número positivo, inténtalo de nuevo... ")
+        return altura()  # Llamada recursiva hasta que se introduzca un valor válido
     
-    return numero
-
+    except TypeError:
+        # Se ejecuta si la estatura es negativa o cero
+        print("La estatura no puede ser negativa o cero, inténtalo de nuevo... ")
+        return altura()  # Llamada recursiva hasta que se introduzca un valor válido
+    
+    return numero  # Devuelve la estatura válida
 
 def nacimiento():
+    """
+    Función que solicita el año de nacimiento y calcula la edad actual del usuario.
+    """
     try:
         numero = int(input("\nIntroduce tu año de nacimiento: "))
-        actual = date.today().year
-        if numero>actual or date.today().year:
-            raise ValueError
+        actual = date.today().year  # Obtiene el año actual
+
+        if numero > actual or actual - numero > 130 : # Lanza una excepción si el año de nacimiento es en el futuro o si es mayor de 130 años
+            raise ValueError  
+        
+    except ValueError: # Se ejecuta si el año introducido no es válido
+        print("Introduce un año válido, inténtalo de nuevo...")
+        return nacimiento()  # Llamada recursiva hasta que se introduzca un valor válido
     
-    except ValueError:
-        print("Introduce un año valido, intentalo de nuevo...")
-        return nacimiento()
+    resultado = actual - numero # Calcula la edad actual del usuario
+    return resultado  # Devuelve la edad calculada
 
-    resultado = actual - numero
-
-    return resultado
-    
-
-if __name__=="__main__":
+if __name__ == "__main__":
     var = False
 
-    while var == False:
+    # Bucle para solicitar la contraseña hasta que sea correcta
+    while not var:
         contrasena = input("Escribe la contraseña: ")
         contra = acceso(contrasena)
+
         if contra:
-            var = True
+            var = True  # Cambia el estado si el acceso es concedido
+       
         else:
             print("\nEscribe la contraseña de nuevo por favor...")
             print("\n******************************************************\n")
 
     print("\n---------------- EDAD ----------------")
-    edad_usuario = edad()   
-    
-    if edad_usuario>18:
+    edad_usuario = edad()  # Llama a la función edad para obtener la edad del usuario
+
+    if edad_usuario >= 18: # Verifica si el usuario es mayor o menor de edad
         print("Eres mayor de edad.\n")
     else:
         print("Eres menor de edad.\n")
 
-
     print("-----------------ALTURA----------------")
-    altura_usuario = altura()
-
-    if altura_usuario>170:
+    altura_usuario = altura()  # Llama a la función altura para obtener la estatura del usuario
+    
+    if altura_usuario > 170: # Verifica si el usuario es alto o de estatura promedio
         print("Eres alto.\n")
     else:
-        print("Eres de estatura promedio. \n")
-
+        print("Eres de estatura promedio.\n")
 
     print("-----------------NACIMIENTO----------------")
-    nacimiento_usuario = nacimiento()
+    nacimiento_usuario = nacimiento()  # Llama a la función nacimiento para calcular la edad del usuario
 
-    if nacimiento_usuario>=30:
-        print("Tienes 30 años o mas.\n")
+    if nacimiento_usuario >= 30: # Verifica si el usuario tiene 30 años o más
+        print("Tienes 30 años o más.\n")
     else:
         print("Eres menor de 30 años.\n")
-
 
     print("********* FIN DEL PROGRAMA ***********")
 
