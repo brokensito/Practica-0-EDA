@@ -1,3 +1,5 @@
-Error: No es posible convertir la cadena a entero
-Error: Error al introducir string en vez de numero
-2024-10-11 09:24:14.659611 Error: No es posible convertir la cadena a entero
+12:05:42 - Error: Error al dividir por cero
+12:05:50 - Error: No es posible convertir la cadena a entero.
+12:06:02 - Error: No es posible convertir la cadena a entero.
+12:06:09 - Error: Error al introducir un valor no numérico en la división
+12:08:03 - Error: Error al calcular la raíz cuadrada: El número no puede ser negativo.

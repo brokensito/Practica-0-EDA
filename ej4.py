@@ -4,87 +4,127 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 4  
 - EXPLICACIONES: 
 
+Incluir en un mismo programa la funcionalidad combinada de los Ejercicios 19, 1, 2 y 14 
+de la hoja de ejercicios 02_4_Ejercicios.pdf de la sección Python de los materiales de 
+la asignatura. El ejercicio 19 integra a los otros tres.
+
+Ej 19. Registro de errores en archivo: Crea un programa que intente realizar varias
+operaciones, maneje las excepciones, y guarde los mensajes de error en un
+archivo de texto.
+
+1. División entre cero: Crea una función que divida dos números e implementa un
+manejo de excepciones para evitar divisiones entre cero.
+
+2. Conversión de cadena a entero: Escribe una función que convierta una cadena
+a un número entero. Maneja la excepción si la conversión no es posible.
+
+14. Excepción al calcular raíz cuadrada: Escribe una función que calcule la raíz
+cuadrada de un número, pero maneja la excepción si el número es negativo.
+
+
 
 '''
-import os
+
 from datetime import datetime
 import math
 
 def div_cero():
 
     try: 
-        a = float(input("Introduzca el PRIMER numero: \n"))
-        b = float(input("Introduzca el SEGUNDO numero: \n "))
-        resultado = a/b
-        return resultado
-    
+        a = float(input("Introduzca el PRIMER número: "))
+        b = float(input("Introduzca el SEGUNDO número: "))
+        resultado = a / b
+        print(f"\nEl resultado de la división es: {resultado}")
+
     except ZeroDivisionError:
-        print("No se puede dividir por cero, intentalo de nuevo.")
-        errores("Error al dividir por 0")
-        return div_cero()
-    
+        print("\nNo se puede dividir por cero, inténtalo de nuevo.")
+        errores("Error al dividir por cero")
+
     except ValueError:
-        print("Los argumentos de la funcion tienen que ser numeros, intentalo de nuevo")
-        errores("Error al introducir string en vez de numero")
-        return div_cero()
-
-
+        print("\nLos argumentos de la función tienen que ser números, inténtalo de nuevo.")
+        errores("Error al introducir un valor no numérico en la división")
 
 def cadena_texto():
 
     cadena = input("Escriba la cadena a convertir a ENTERO: ")
-
     try:
-        cadena = int(cadena)
-        return cadena
+        numero = int(cadena)
+        print(f"\nLa cadena convertida a entero es: {numero}")
 
     except ValueError:
-        print("ERROR: La cadena introducida no se puede convertir a entero. Intentelo de nuevo.\n")
+        print("\nERROR: La cadena introducida no se puede convertir a entero. Inténtalo de nuevo.\n")
         errores("No es posible convertir la cadena a entero.")
-        return cadena_texto()
-    
 
 def raiz(): 
-    numero = float(input("\nIntroduce el numero cuya raiz quieres calcular: "))
-
-    try:
-        if numero <0:
-            raise TypeError
-        else:
-            return math.sqrt(numero)
-        
-    except ValueError:
-        print("\nEl argumento introducido tiene que ser un numero, intentelo de nuevo. ")
-        errores("Introducir un string en vez de un numero")
-        raiz()
-        
-    except TypeError:
-        print("\n El numero introducido no puede ser MENOR o IGUAL a  CERO")
-        errores("Introducir un valor negativo en una raiz")
-        return raiz()
     
+    try:
+        numero = float(input("Introduce el número cuya raíz quieres calcular: "))
+        
+        if numero < 0:
+            raise ValueError("El número no puede ser negativo.")
+        
+        resultado = math.sqrt(numero)
+        print(f"\nLa raíz cuadrada de {numero} es {resultado}")
+
+    except ValueError as ve:
+        print(f"\nError: {ve}")
+        errores(f"Error al calcular la raíz cuadrada: {ve}")
+
 def errores(mensaje):
-    with open("excepciones.txt","a") as archivo:
-        archivo.write(f"{datetime.now()} Error: {mensaje}\n")
+    hora_actual = datetime.now().strftime('%H:%M:%S') #Ya que la funcion datetime.now() nos da hasta los microsegundos, tenemos que coger unicamente las horas, minutos y segundos donde se cometio el error...
+    try:
+        with open("excepciones.txt", "a") as archivo:
+            archivo.write(f"{hora_actual} - Error: {mensaje}\n")
+
+    except Exception as excepcion:
+        print(f"\nNo se pudo escribir en el archivo de registro: {excepcion}")
+
 
 def imprimir_linea(estilo='-', longitud=50, mensaje=''):
+
     if mensaje:
         linea = estilo * ((longitud - len(mensaje) - 2) // 2)
-        print(f"{linea} {mensaje} {linea}")
+        print(f"\n{linea} {mensaje} {linea} \n") 
+
     else:
-        print(estilo * longitud)
+        print(f"\n{estilo * longitud} \n")
 
-if __name__=="__main__":
-    print("**********************************************************")
-    print("\n\tPrograma para dividir dos numeros (con excepciones)")
-    div_cero()
-    
+if __name__ == "__main__":
 
-    
-    print("**********************************************************")
-    print("\n\tPrograma para convertir una cadena a entero.")
-    cadena_texto()
-    raiz()
+    continuar = True
+
+    while continuar:
+
+        imprimir_linea('*', mensaje=" MENÚ DE OPERACIONES ")
+
+        print("Seleccione una opción:")
+        print("1) División entre dos números")
+        print("2) Conversión de cadena a entero")
+        print("3) Calcular raíz cuadrada")
+        print("4) Salir")
+
+        opcion = input("\nOpción seleccionada: ")
+
+        if opcion == '1':
+            imprimir_linea('-', mensaje=" División entre dos números ")
+            div_cero()
+
+        elif opcion == '2':
+            imprimir_linea('-', mensaje=" Conversión de cadena a entero ")
+            cadena_texto()
+
+        elif opcion == '3':
+            imprimir_linea('-', mensaje=" Calcular raíz cuadrada ")
+            raiz()
+
+        elif opcion == '4':
+            print("\nGracias por usar el programa. ¡Hasta luego!")
+            continuar = False
+
+        else:
+            print("\nOpción no válida. Por favor, selecciona una opción del 1 al 4.")
+
+    imprimir_linea('*', mensaje=" FIN DEL PROGRAMA ")
 
 
 
