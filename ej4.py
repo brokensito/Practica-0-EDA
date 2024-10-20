@@ -4,9 +4,12 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 4  
 - EXPLICACIONES: 
 
-Abajo quedan explicadas todas las funciones paso por paso, incluyendo por que se hace cada cosa. Cabe destacar el uso del modulo datetime para obtener la hora, minuto y segundo donde se alcanzo el error (en caso de error).
-Tambien cabe resaltar el uso de la funcion imprimir_lineas, la cual queda explicada debajo.
+Este programa integra varias funciones que manejan excepciones y registran errores en un archivo de texto. Se utiliza el módulo `datetime` para obtener la hora exacta en que ocurre un error y registrarlo en el archivo excepciones.txt. 
 
+- La función imprimir_linea se emplea para mejorar la presentación en consola, permitiendo imprimir líneas decorativas con mensajes centrados. 
+- div_cero(): Realiza la división entre dos números introducidos por el usuario, manejando excepciones por división entre cero y entradas no numéricas.
+- cadena_texto(): Convierte una cadena de texto ingresada por el usuario a un número entero, manejando la excepción si la conversión no es posible.
+- raiz(): Calcula la raíz cuadrada de un número proporcionado por el usuario, manejando la excepción si el número es negativo.
 
 '''
 
@@ -122,7 +125,7 @@ if __name__ == "__main__":
         if opcion == '1':
             imprimir_linea('-', mensaje=" División entre dos números ")
             divcero_usuario = div_cero()
-            if divcero_usuario is not None: # Ponemos el is not None porque si ocurre algun error implicitamente se puede retornar como None.
+            if divcero_usuario is not None:  # Verificamos si se obtuvo un resultado válido
                 print(f"\nEl resultado de la división es: {divcero_usuario}")
 
         elif opcion == '2':
@@ -134,7 +137,7 @@ if __name__ == "__main__":
         elif opcion == '3':
             imprimir_linea('-', mensaje=" Calcular raíz cuadrada ")
             resultado = raiz()
-            if resultado: # De igual manera que con el is not None, si se detecta un resultado valido (diferente de None, 0, vacio, etc.) ya se asignan numero y raiz_cuadrada a sus respectivos resultados. De otra manera podria causar error si previamente hubo una excepcion
+            if resultado:  # Verificamos si se obtuvo un resultado válido
                 numero, raiz_cuadrada = resultado
                 print(f"\nLa raíz cuadrada de {numero} es {raiz_cuadrada}")
                 
@@ -146,13 +149,3 @@ if __name__ == "__main__":
             print("\nOpción no válida. Por favor, selecciona una opción del 1 al 4.")
 
     imprimir_linea('*', mensaje=" FIN DEL PROGRAMA ")
-
-
-
-
-        
-
-
-
-
-
