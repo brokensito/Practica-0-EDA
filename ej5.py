@@ -55,8 +55,10 @@ def buscar(archivo_usuario, palabra):
         numero_linea = 1  # Iniciamos el contador de líneas en 1
 
         for linea in lineas:
+
             if palabra.lower() in linea.lower():
                 indices.append(numero_linea)
+                
             numero_linea += 1  # Incrementamos el contador en cada iteración
 
         if indices:
@@ -67,7 +69,7 @@ def buscar(archivo_usuario, palabra):
 
     except FileNotFoundError:
         print("ERROR: El archivo no existe.")
-        
+
     except Exception as excepcion:
         print(f"Ha ocurrido un ERROR: {excepcion}")
 
