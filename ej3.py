@@ -2,52 +2,62 @@
 PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25  
 - AUTOR: David Sanz Fuertes   
 - EJERCICIO: 3  
-- EXPLICACIONES: 
+- EXPLICACIONES:
+
+Calculadora simple: Crea una función que simule una calculadora básica. La
+función debe aceptar dos números y un operador (suma, resta, multiplicación
+o división) y devolver el resultado.
 
 
 '''
 
-import os
-
 def calculadora(num1, num2, operacion):
+
     if operacion == "1":
-        return num1+num2
+        return num1 + num2
     
     elif operacion == "2":
-        return num1-num2
+        return num1 - num2
     
     elif operacion == "3":
-        return num1*num2
+        return num1 * num2
     
     elif operacion == "4":
-        return num1/num2
-    
-    else:
-        print("La operacion no existe, intentalo de nuevo")
-        operacion = input("Escribe la operacion de nuevo: ")
-        return calculadora(num1, num2, operacion)
 
-if __name__=="__main__":
+        if num2 != 0:
+            return num1 / num2
+        
+        else:
+            print("Error: División por cero")
+            return None
+        
+    else:
+        print("La operación no existe, inténtalo de nuevo.")
+        return None
+
+if __name__ == "__main__":
 
     print("\n********************** CALCULADORA **************************")
 
-    var = True
+    continuar = True
 
-    while var:
-        numero1 = float(input("\nEscribe el primer numero: "))
-        numero2 = float(input("\nEscribe el segundo numero:"))
-        operacion_usuario = input("\nQue operacion quieres hacer:\n\t1) Suma \n\t2) Resta  \n\t3) Multiplicacion \n\t4) Division \n\nRespuesta: ")
-        resultado = calculadora(numero1, numero2, operacion_usuario)
-        print(f"\nEl resultado es: {resultado} ")
+    while continuar:
 
-        continuar = input("\nQuieres salir del programa (1) o continuar con otra operacion (2)?")
-        if continuar:
-            var = False
-        else: 
-            continue
+        try:
+            numero1 = float(input("\nEscribe el primer número: "))
+            numero2 = float(input("Escribe el segundo número: "))
+            operacion_usuario = input("\n¿Qué operación quieres hacer?\n\t1) Suma\n\t2) Resta\n\t3) Multiplicación\n\t4) División\n\nRespuesta: ")
+            resultado = calculadora(numero1, numero2, operacion_usuario)
 
-    print("********************** FIN DEL PROGRAMA ************************")
-    os.system("cls")
+            if resultado is not None:
+                print(f"\nEl resultado es: {resultado}")
 
+        except Exception as excepcion:
+            print(f"ERROR ({excepcion}):Entrada inválida, por favor ingresa números válidos.")
 
+        opcion = input("\n¿Quieres realizar otra operación? (si/no): ").lower()
+        if opcion != 'si':
+            continuar = False
+
+    print("\n********************** FIN DEL PROGRAMA ************************\n")
 

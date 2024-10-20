@@ -43,7 +43,7 @@ if __name__=="__main__":
 
     ejemplo = [1,2,3,4,5,7,5,7,5,1,1,100,99]
     maximo, minimo = min_max(ejemplo)
-    print(f"El MAXIMO es: {maximo}\n")
+    print(f"\nEl MAXIMO es: {maximo}\n")
     print(f"El MINIMO es: {minimo}\n")
 
     print(f"La lista eliminando los elementos duplicados queda tal que {duplicados(ejemplo)}\n")
@@ -51,6 +51,6 @@ if __name__=="__main__":
     print(f"La lista convertida en tupla es {tupla(ejemplo)}\n")
     
     vocales = frase_vocales()
-    print(f"El nunero de vocales en la frase introducida es: {vocales}")
+    print(f"El numero de vocales en la frase introducida es: {vocales}\n")
 
 
