@@ -4,11 +4,9 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 4  
 - EXPLICACIONES: 
 
-- Se implementan dos funciones principales para trabajar con archivos de texto.
-- leer(archivo): Lee y muestra todo el contenido del archivo especificado, manejando excepciones si el archivo no existe.
-- buscar(archivo_usuario, palabra): Busca una palabra específica en el archivo y muestra en qué líneas aparece, sin importar mayusculas o minusculas.
-- Se utiliza un menú interactivo para que el usuario elija entre leer el archivo, buscar una palabra o salir del programa.
-- Se manejan excepciones para asegurar que el programa no falle ante errores comunes, como archivos inexistentes o entradas invalidas.
+Abajo quedan explicadas todas las funciones paso por paso, incluyendo por que se hace cada cosa. Cabe destacar el uso del modulo datetime para obtener la hora, minuto y segundo donde se alcanzo el error (en caso de error).
+Tambien cabe resaltar el uso de la funcion imprimir_lineas, la cual queda explicada debajo.
+
 
 '''
 

@@ -5,13 +5,12 @@ PRÁCTICA 0 Estructura de Datos y Algoritmos IM. Curso 24/25
 - EJERCICIO: 5 
 - EXPLICACIONES: 
 
-Incluir en un mismo programa la funcionalidad combinada de los Ejercicios 2 y 6 de la 
-hoja de ejercicios 02_5_Ejercicios.pdf de la sección Python de los materiales de la 
-asignatura.
+- Se implementan dos funciones principales para trabajar con archivos de texto.
+- leer(archivo): Lee y muestra todo el contenido del archivo especificado, manejando excepciones si el archivo no existe.
+- buscar(archivo_usuario, palabra): Busca una palabra específica en el archivo y muestra en qué líneas aparece, sin importar mayusculas o minusculas.
+- Se utiliza un menu interactivo para que el usuario elija entre leer el archivo, buscar una palabra o salir del programa.
+- Se manejan excepciones para asegurar que el programa no falle ante errores comunes, como archivos inexistentes o entradas inválidas.
 
-2. Escribe un programa que lea todo el contenido del archivo y lo muestre en pantalla.
-
-6. Escribe un programa que busque una palabra específica en un archivo de texto. Si la encuentra, muestra en qué líneas aparece.
 '''
 
 def leer(archivo):
