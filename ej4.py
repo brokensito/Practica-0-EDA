@@ -34,7 +34,7 @@ def div_cero():
         a = float(input("Introduzca el PRIMER número: "))
         b = float(input("Introduzca el SEGUNDO número: "))
         resultado = a / b
-        print(f"\nEl resultado de la división es: {resultado}")
+        return resultado
 
     except ZeroDivisionError:
         print("\nNo se puede dividir por cero, inténtalo de nuevo.")
@@ -49,8 +49,8 @@ def cadena_texto():
     cadena = input("Escriba la cadena a convertir a ENTERO: ")
     try:
         numero = int(cadena)
-        print(f"\nLa cadena convertida a entero es: {numero}")
-
+        return numero
+        
     except ValueError:
         print("\nERROR: La cadena introducida no se puede convertir a entero. Inténtalo de nuevo.\n")
         errores("No es posible convertir la cadena a entero.")
@@ -64,7 +64,8 @@ def raiz():
             raise ValueError("El número no puede ser negativo.")
         
         resultado = math.sqrt(numero)
-        print(f"\nLa raíz cuadrada de {numero} es {resultado}")
+
+        return numero, resultado
 
     except ValueError as ve:
         print(f"\nError: {ve}")
@@ -107,16 +108,19 @@ if __name__ == "__main__":
 
         if opcion == '1':
             imprimir_linea('-', mensaje=" División entre dos números ")
-            div_cero()
+            divcero_usuario = div_cero()
+            print(f"\nEl resultado de la división es: {divcero_usuario}")
 
         elif opcion == '2':
             imprimir_linea('-', mensaje=" Conversión de cadena a entero ")
-            cadena_texto()
+            cadena_usuario = cadena_texto()
+            print(f"\nLa cadena convertida a entero es: {cadena_usuario}")
 
         elif opcion == '3':
             imprimir_linea('-', mensaje=" Calcular raíz cuadrada ")
-            raiz()
-
+            numero, resultado = raiz()
+            print(f"\nLa raíz cuadrada de {numero} es {resultado}")
+            
         elif opcion == '4':
             print("\nGracias por usar el programa. ¡Hasta luego!")
             continuar = False
