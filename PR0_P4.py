@@ -36,7 +36,7 @@ def div_cero():
     except ValueError:
         # Maneja la excepción si la entrada no es un número válido
         print("\nLos argumentos de la función tienen que ser números, inténtalo de nuevo.")
-        errores("Error al introducir un valor no numérico en la división")  # Registramos el error
+        errores("Error al introducir un valor no numerico en la division")  # Registramos el error
 
 def cadena_texto():
     """
@@ -50,7 +50,7 @@ def cadena_texto():
         
     except ValueError:
         # Maneja la excepción si la cadena no puede convertirse a entero
-        print("\nERROR: La cadena introducida no se puede convertir a entero. Inténtalo de nuevo.\n")
+        print("\nERROR: La cadena introducida no se puede convertir a entero. Intentalo de nuevo.\n")
         errores("No es posible convertir la cadena a entero.")  # Registramos el error
 
 def raiz(): 
@@ -64,7 +64,7 @@ def raiz():
         
         if numero < 0:
             # Si el número es negativo, lanzamos una excepción
-            raise ValueError("El número no puede ser negativo.")
+            raise ValueError("El numero no puede ser negativo.")
         
         resultado = math.sqrt(numero)  # Calculamos la raíz cuadrada
 
@@ -73,7 +73,7 @@ def raiz():
     except ValueError as ve:
         # Maneja excepciones relacionadas con valores inválidos
         print(f"\nError: {ve}")
-        errores(f"Error al calcular la raíz cuadrada: {ve}")  # Registramos el error
+        errores(f"Error al calcular la raiz cuadrada: {ve}")  # Registramos el error
 
 def errores(mensaje):
     """
